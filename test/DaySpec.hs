@@ -11,6 +11,7 @@ import qualified Days.DayFive as Five
 import qualified Days.DaySix as Six
 import qualified Days.DaySeven as Seven
 import qualified Days.DayEight as Eight
+import qualified Days.DayNine as Nine
 
 import Types
 import Utils
@@ -94,3 +95,17 @@ spec = parallel $ do
     it "Part B" $ do
       ops <- readAoCList "data/day8/practice" :: IO [HandheldOps]
       Eight.partb ops `shouldBe` 8
+
+  describe "Day 9" $ do
+    it "Part A" $ do
+      ints <- readAoCList "data/day9/practice" :: IO [Int]
+      Nine.findInvalid ints 5 `shouldBe` 127
+
+    it "Part B" $ do
+      ints <- readAoCList "data/day9/practice" :: IO [Int]
+      let invalid = Nine.findInvalid ints 5
+      invalid `shouldBe` 127
+      let contagious = Nine.contagiousList 2 invalid ints
+      let l = maximum contagious
+      let h = minimum contagious
+      l + h `shouldBe` 62
