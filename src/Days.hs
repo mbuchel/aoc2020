@@ -7,7 +7,8 @@ module Days
   , day6
   , day7
   , day8
-  , day9 )
+  , day9
+  , day10 )
   where
 
 import  Types
@@ -22,6 +23,7 @@ import qualified Days.DaySix as Six
 import qualified Days.DaySeven as Seven
 import qualified Days.DayEight as Eight
 import qualified Days.DayNine as Nine
+import qualified Days.DayTen as Ten
 
 day1 =
   [ ("day1/input", One.parta, readIntList)
@@ -66,6 +68,11 @@ day8 =
 day9 =
   [ ("day9/input", Nine.parta, readIntList)
   , ("day9/input", Nine.partb, readIntList)
+  ]
+
+day10 =
+  [ ("day10/input", Ten.parta, readIntList)
+  , ("day10/input", Ten.partb, readIntList) -- Takes too long to calculate
   ]
 
 readHandheldOps :: String -> IO [HandheldOps]

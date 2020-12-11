@@ -3,12 +3,15 @@ module Utils
   , readAoCPassports
   , readAoCGroups
   , dropEveryN
+  , dropIndices
   , keepEveryN )
   where
 
 import Data.List.Split
 import Data.Maybe
 import Text.Read
+
+import qualified Data.Set as S
 
 import Types
 
@@ -28,6 +31,10 @@ readAoCGroups file = do
   input <- map readMaybe . lines <$> readFile file
   let groupings = splitWhen (== Nothing) input
   return $ map (map fromJust) groupings
+
+dropIndices :: S.Set Int -> [a] -> [a]
+dropIndices indices = foldr step [] . zip [1..]
+  where step (i, x) acc = if (S.member i indices) then acc else x:acc
 
 dropEveryN :: Int -> [a] -> [a]
 dropEveryN n

@@ -17,3 +17,4 @@ main = do
   mapM_ runAoc day7
   mapM_ runAoc day8
   mapM_ runAoc day9
+  mapM_ runAoc day10

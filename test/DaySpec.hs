@@ -12,6 +12,7 @@ import qualified Days.DaySix as Six
 import qualified Days.DaySeven as Seven
 import qualified Days.DayEight as Eight
 import qualified Days.DayNine as Nine
+import qualified Days.DayTen as Ten
 
 import Types
 import Utils
@@ -109,3 +110,12 @@ spec = parallel $ do
       let l = maximum contagious
       let h = minimum contagious
       l + h `shouldBe` 62
+
+  describe "Day 10" $ do
+    it "Part A" $ do
+      ints <- readAoCList "data/day10/practice" :: IO [Int]
+      Ten.parta ints `shouldBe` 220
+
+    it "Part B" $ do
+      ints <- readAoCList "data/day10/practice" :: IO [Int]
+      Ten.partb ints `shouldBe` 19208
